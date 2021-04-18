@@ -22,15 +22,15 @@ void object::researchPower()
 	
 	object battery = radar(PowerCell);
 	object researcher = radar(ResearchCenter);
-	object researchMaterial;
+	object researchMats;
 	
 	goto(battery.position);
 	errmode(0);
 	grab();
 	goto(researcher.position);
 	drop();
+	researcher.research(ResearchWinged);
 	move(-5);
-	researchMaterial.research(ResearchWinged);
 	message("Research Station Charged", DisplayInfo);
 	
 }
@@ -39,14 +39,16 @@ void object::factorySupplier()
 {
 	/* Supplies factory with titanium cube */
 	
-	object factory = radar(BotFactory);
+	object botFactory = radar(BotFactory);
 	object cube = radar(Titanium);
 	
 	goto(cube.position);
 	errmode(0);
 	grab();
-	goto(factory.position);
+	errmode(1);
+	goto(botFactory.position);
 	drop();
+	botFactory.factory(WingedGrabber);
 	move(-5);
 	message("Factory Loaded", DisplayInfo);
 }
@@ -69,7 +71,7 @@ void object::wingPower()
 }
 
 
-extern void object::missionStart2()
+extern void object::missionStart3()
 {
 	
 	/* Sets up base */
@@ -82,6 +84,7 @@ extern void object::missionStart2()
 	flagBuilderSteps(BotFactory,factoryFlag); 
 	message("Base Ready", DisplayInfo);
 	factorySupplier();
+	
 	wingPower();
 	
 	
