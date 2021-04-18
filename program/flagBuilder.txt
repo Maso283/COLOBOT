@@ -1,0 +1,39 @@
+/* Finds nearest Titanium cube, places it at the flag, and begins construction */
+
+void object::flagBuilderSteps(int structure, object flag)
+{
+	object titCube = radar(Titanium);
+	goto(titCube.position);
+	grab();
+	goto(flag.position);
+	move(5);
+	drop();
+	build(structure);
+	
+}
+
+
+ /* Builds chosen structures at designated flags
+    Refer back to the SATCOM for list of structures
+    that can be built */
+extern void object::flagBuilder()
+{
+	
+	
+	object factoryFlag;
+	factoryFlag = radar(RedFlag);
+	
+	object researchFlag;
+	researchFlag = radar(BlueFlag);
+	
+	flagBuilderSteps(BotFactory,factoryFlag);
+	flagBuilderSteps(ResearchCenter, researchFlag); 
+	
+	
+	message("Base Ready", DisplayInfo);
+	
+	
+	
+	
+	
+}

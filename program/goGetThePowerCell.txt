@@ -1,0 +1,18 @@
+extern void object::goGetThePowerCell()
+{
+	
+	int cells[0];
+	cells[0] = PowerCell;
+	object nearestCell = radar(cells);
+	
+	int rCenter[0];
+	rCenter[0] = ResearchCenter;
+	object nearestRCenter = radar(rCenter);
+	
+	goto(nearestCell.position);
+	grab();
+	goto(nearestRCenter.position);
+	drop();
+	move(-2);
+	
+}

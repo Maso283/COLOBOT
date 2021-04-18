@@ -1,0 +1,16 @@
+extern void object::researchCharger()
+{
+	
+	object battery = radar(PowerCell);
+	object researcher = radar(ResearchCenter);
+	
+	goto(battery.position);
+	errmode(0);
+	grab();
+	goto(researcher.position);
+	drop();
+	move(-5);
+	
+	message("Research Station Charged", DisplayInfo);
+	
+}

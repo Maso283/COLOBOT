@@ -1,0 +1,17 @@
+extern void object::goGetTheBlackBox()
+{
+	
+	int boxes[0];
+	boxes[0] = BlackBox;
+	object nearestBox = radar(boxes);
+	
+	int ship[0];
+	ship[0] = SpaceShip;
+	object rocket = radar(ship);
+	
+	goto(nearestBox.position);
+	grab();
+	goto(rocket.position);
+	drop();
+	
+}

@@ -1,0 +1,79 @@
+/* Finds nearest Titanium cube, places it at the flag, and begins construction */
+
+/* NOTE: Be sure to place a red flag and a blue flag before beginning. */
+
+void object::flagBuilderSteps(int structure, object flag)
+{
+	object titCube = radar(Titanium);
+	goto(titCube.position);
+	errmode(0);
+	grab();
+	goto(flag.position);
+	move(5);
+	drop();
+	build(structure);
+	
+}
+
+extern void object::missionStart()
+{
+	
+	/* Sets up base */
+	
+	object factoryFlag = radar(RedFlag);
+	object researchFlag = radar(BlueFlag);
+	
+	
+	
+	flagBuilderSteps(ResearchCenter, researchFlag);
+	
+	/* Supplies research station with battery */
+	
+	object battery = radar(PowerCell);
+	object researcher = radar(ResearchCenter);
+	
+	goto(battery.position);
+	errmode(0);
+	grab();
+	goto(researcher.position);
+	drop();
+	move(-5);
+	message("Research Station Charged", DisplayInfo);
+	
+	
+	flagBuilderSteps(BotFactory,factoryFlag); 
+	message("Base Ready", DisplayInfo);
+	
+	
+	
+	
+	
+	
+	/* Supplies factory with titanium cube */
+	
+	object factory = radar(BotFactory);
+	object cube = radar(Titanium);
+	
+	goto(cube.position);
+	errmode(0);
+	grab();
+	goto(factory.position);
+	drop();
+	move(-5);
+	message("Factory Loaded", DisplayInfo);
+	
+	
+	/* Prepares Winged Grabber with a battery */
+	
+	errmode(1);
+	object wings = radar(WingedGrabber);
+	while((wings = radar(WingedGrabber)) == null){wait(1);}
+	
+	goto(battery.position);
+	grab();
+	goto(wings.position);
+	drop();
+	move(-10);
+	
+	
+}

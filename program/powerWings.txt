@@ -1,0 +1,14 @@
+extern void object::powerWings()
+{
+	
+	object wings = radar(WingedGrabber);
+	object battery = radar(PowerCell);
+	
+	goto(battery.position);
+	errmode(0);
+	grab();
+	goto(wings.position);
+	drop();
+	move(-10);
+	
+}

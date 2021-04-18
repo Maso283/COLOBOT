@@ -1,0 +1,23 @@
+extern void object::goGetTheTitaniumCube()
+{
+	
+	/* Defining the titanium cube */
+	int tinCube[0];
+	tinCube[0] = Titanium;
+	object nearestTitanium = radar(tinCube);
+	
+	
+	/* Defining the factory */
+	int bFactory[0];
+	bFactory[0] = BotFactory;
+	object nearestBotFactory = radar(bFactory);
+	
+	/* Instructions to take the titanium
+	cube to the factory */
+	goto(nearestTitanium.position);
+	grab();
+	goto(nearestBotFactory.position);
+	drop();
+	move(-2);
+	
+}

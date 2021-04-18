@@ -1,0 +1,16 @@
+extern void object::factoryLoader()
+{
+	
+	object factory = radar(BotFactory);
+	object cube = radar(Titanium);
+	
+	goto(cube.position);
+	errmode(0);
+	grab();
+	goto(factory.position);
+	drop();
+	move(-5);
+	
+	message("Factory Loaded", DisplayInfo);
+	
+}

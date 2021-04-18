@@ -1,0 +1,18 @@
+void object::downwardSpiral(int spaces, int limit)
+{
+	while(spaces >= limit){
+		move(spaces);
+		turn(90);
+		move(spaces);
+		turn(90);
+		
+		spaces = spaces-5;
+	}
+	
+}
+
+extern void object::Move()
+{
+	downwardSpiral(25, 5);
+	
+}

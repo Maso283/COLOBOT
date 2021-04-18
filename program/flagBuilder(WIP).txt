@@ -1,0 +1,37 @@
+void object::flagBuilder(int structure, object flag)
+{
+	object titCube = radar(Titanium);
+	goto(titCube.position);
+	grab();
+	goto(flag.position);
+	drop();
+	build(structure);
+	
+}
+
+
+extern void object::moonbaseConstruct()
+{
+	
+	/* Explain what a titanium cube is to the robot */
+	
+	 
+	
+	/* Explain what a flag is to the robot? */
+	
+	object factoryFlag;
+	factoryFlag = radar(RedFlag);
+	
+	object researchFlag;
+	researchFlag = radar(BlueFlag);
+	
+	flagBuilder(BotFactory,factoryFlag); 
+	
+	
+	
+	
+	
+	
+	
+	
+}

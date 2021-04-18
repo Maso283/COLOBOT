@@ -1,0 +1,42 @@
+extern void object::moonbaseConstruct()
+{
+	
+	/* Explain what a titanium cube is to the robot */
+	
+	object titCube;
+	titCube = radar(Titanium); 
+	
+	/* Explain what a flag is to the robot? */
+	
+	object factoryFlag;
+	factoryFlag = radar(RedFlag);
+	
+	object researchFlag;
+	researchFlag = radar(BlueFlag);
+	
+	/* Grabber retrieves a titanium cube,
+	places it at the red flag,
+	and builds a bot factory */
+	
+	goto(titCube.position);
+	grab();
+	goto(factoryFlag.position);
+	drop();
+	build(BotFactory);
+	
+	/* Grabber then retrieves ANOTHER cube,
+	goes to the blue flag,
+	and builds a research facility */
+	
+	goto(titCube.position);
+	grab();
+	goto(researchFlag.position);
+	drop();
+	build(ResearchCenter);
+	
+	/* Robot uses cube to construct factory */
+	
+	
+	
+	
+}
